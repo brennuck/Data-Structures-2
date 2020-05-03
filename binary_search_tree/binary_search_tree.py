@@ -13,13 +13,13 @@ class BinarySearchTree:
     # Insert the given value into the tree
     def insert(self, value):
         if value < self.value: # If the value is less than the base value
-            if not self.left: # If it's not left
-                self.left = BinarySearchTree(value) # Make left the value
+            if not self.left: # If there's no left value
+                self.left = BinarySearchTree(value) # Make given value the top left value
             else: # if it is left
                 self.left.insert(value) # insert the new value
         else: # if the value is more than the base value
-            if not self.right: # if it's not going right
-                self.right = BinarySearchTree(value) # make right the new value
+            if not self.right: # if there's no right value
+                self.right = BinarySearchTree(value) # make given value the top right value
             else: # if it is right
                 self.right.insert(value) # insert the new value
 
@@ -41,11 +41,10 @@ class BinarySearchTree:
 
     # Return the maximum value found in the tree
     def get_max(self):
-        # if theres a node to the right
-        # get max on right
-        # else
-        # return node.value
-        pass
+        if not self.right: # if there's no right value
+            return self.value # make the top value the max
+        else: # if there's right values
+            return self.right.get_max() # find the max
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
